@@ -13,14 +13,14 @@
  *
  */
 
-class AltGrid extends WireData implements Module {
+class AlternativeGridImages extends WireData implements Module {
 
     public static function getModuleInfo() {
         return array(
             'title' => 'Alternative grid for multiple images/files', 
-            'version' => 105, 
+            'version' => 106, 
             'summary' => "This module show an alternative grid system in multiple images or files",
-            'href' => 'https://github.com/LuisSantiago/AltGrid',
+            'href' => 'https://github.com/LuisSantiago/AlternativeGridImages',
             'author' => 'Blad',
             'autoload' => true
             );
@@ -31,8 +31,8 @@ class AltGrid extends WireData implements Module {
         }
         
     public function altGridconfigBefore(HookEvent $event) {
-                $this->config->scripts->add($this->config->urls->AltGrid . 'AltGrid.js'); 
-                $this->config->scripts->add($this->config->urls->AltGrid . 'jquery.cookie.js'); 
-                $this->config->styles->add($this->config->urls->AltGrid . 'AltGrid.css');                
+                $this->config->scripts->add($this->config->urls->AlternativeGridImages . 'AlternativeGridImages.js'); 
+                $this->config->scripts->add($this->config->urls->AlternativeGridImages . 'jquery.cookie.js'); 
+                $this->config->styles->add($this->config->urls->AlternativeGridImages . 'AlternativeGridImages.css');                
          }
 }
