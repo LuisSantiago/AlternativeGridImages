@@ -13,14 +13,14 @@
  *
  */
 
-class altGrid extends WireData implements Module, ConfigurableModule {
+class AltGrid extends WireData implements Module {
 
     public static function getModuleInfo() {
         return array(
             'title' => 'Alternative grid for multiple images/files', 
-            'version' => 103, 
+            'version' => 105, 
             'summary' => "This module show an alternative grid system in multiple images or files",
-            'href' => 'https://github.com/LuisSantiago/altGrid',
+            'href' => 'https://github.com/LuisSantiago/AltGrid',
             'author' => 'Blad',
             'autoload' => true
             );
@@ -31,46 +31,13 @@ class altGrid extends WireData implements Module, ConfigurableModule {
         }
         
     public function altGridconfigBefore(HookEvent $event) {
-                $this->config->scripts->add($this->config->urls->altGrid . 'altGrid.js'); 
-                $this->config->styles->add($this->config->urls->altGrid . 'altGrid.css');
-
-
-            echo '<input type="hidden" id="1" value="<?php echo $varp; ?>">';
-            echo '<input type="hidden" id="2" value="<?php echo $varm; ?>">';
+                $this->config->scripts->add($this->config->urls->AltGrid . 'altGrid.js'); 
+                $this->config->scripts->add($this->config->urls->AltGrid . 'jquery.cookie.js'); 
+                $this->config->styles->add($this->config->urls->AltGrid . 'altGrid.css');
 
                         
          }
-
-    public function __construct() {
-
-        $this->marginfield = '20px';
-        $this->percentfield = '30%';
-    }
-
-
-
-    public static function getModuleConfigInputfields(array $data) {
-        $inputfields = new InputfieldWrapper(); 
-
-        $field = wire('modules')->get('InputfieldText');
-        $field->name = 'marginfield';
-        $field->value = $data['marginfield'];
-        $field->label = 'Images margin-right:'; 
-        $field->notes = 'Default 20px'; 
-      
-        $inputfields->add($field);
-        
-        $field = wire('modules')->get('InputfieldText');
-        $field->name = 'percentfield';
-        $field->value = $data['percentfield'];
-        $field->label = 'Width percentage of the images:'; 
-        $field->notes = 'Default 30%'; 
-
-        $inputfields->add($field);
-
-        return $inputfields;
-    }
-
     
     
 }
+
