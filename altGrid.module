@@ -18,7 +18,7 @@ class altGrid extends WireData implements Module, ConfigurableModule {
     public static function getModuleInfo() {
         return array(
             'title' => 'Alternative grid for multiple images/files', 
-            'version' => 1, 
+            'version' => 103, 
             'summary' => "This module show an alternative grid system in multiple images or files",
             'href' => 'https://github.com/LuisSantiago/altGrid',
             'author' => 'Blad',
