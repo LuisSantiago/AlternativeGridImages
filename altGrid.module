@@ -13,7 +13,7 @@
  *
  */
 
-class altGrid extends WireData implements Module {
+class altGrid extends WireData implements Module, ConfigurableModule {
 
     public static function getModuleInfo() {
         return array(
@@ -33,5 +33,27 @@ class altGrid extends WireData implements Module {
      public function altGridconfigBefore(HookEvent $event) {
                 $this->config->scripts->add($this->config->urls->altGrid . 'altGrid.js'); 
                 $this->config->styles->add($this->config->urls->altGrid . 'altGrid.css');                             
-        }
+         }
+
+     static public function getModuleConfigInputfields(array $data) {
+		$inputfields = new InputfieldWrapper();
+		$data = array_merge(self::$defaultConfig, $data); 
+
+		$fi = wire('modules')->get('InputfieldText'); 
+		$fi->attr('name', 'marginfield');
+		$fi->attr('value', $data['20px']); 
+		$fi->label = __('Images margin-right:'); 
+		$inputfields->add($fi);
+		
+		$fi = wire('modules')->get('InputfieldText'); 
+		$fi->attr('name', 'percentfield');
+		$fi->attr('value', $data['30%']); 
+		$fi->label = __('porcentaje de anchura  por defecto de las imágenes:'); 
+		$inputfields->add($fi);
+
+		return $inputfields;
+	}
+
+    
+    
 }
