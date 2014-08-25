@@ -20,7 +20,7 @@ class altGrid extends WireData implements Module {
             'title' => 'Alternative grid for multiple images/files', 
             'version' => 1, 
             'summary' => "This module show an alternative grid system in multiple images or files",
-            'href' => '',
+            'href' => 'https://github.com/LuisSantiago/altGrid',
             'author' => 'Blad',
             'autoload' => true
             );
@@ -29,9 +29,8 @@ class altGrid extends WireData implements Module {
     public function init() {
             $this->addHookBefore('InputfieldImage::render', $this, 'altGridconfigBefore');
         }
-
+        
      public function altGridconfigBefore(HookEvent $event) {
-
                 $this->config->scripts->add($this->config->urls->altGrid . 'altGrid.js'); 
                 $this->config->styles->add($this->config->urls->altGrid . 'altGrid.css');                             
         }
