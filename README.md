@@ -11,7 +11,7 @@ Add a slider directly proportional to the size of the images introduced in the i
 
 #### Installation
 
-copy AlternativeGridImages folder to /site/modules/
+This module's files should be placed in /site/modules/AlternativeGridImages/
 
 #### Support forum
 
