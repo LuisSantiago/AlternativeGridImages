@@ -1,24 +1,14 @@
 .Inputfields > li > .ui-widget-content > ul.InputfieldFileList > li,
 .Inputfields > li > .InputfieldContent > ul.InputfieldFileList > li, .floatleft {
 	float: left;
+	margin-right: 20px;
 }
-
 #slider{
-	width: 89%;
-	margin-right: 2%;
-	float: left;
-	margin-top: 7px;
+	width: 40%;
+	margin-left: 29%;
+	margin-bottom: 17px;
 }
-
-.inputporcentaje{
-
-	border: none;
-	width: 9%;
-	text-align: center;
-background: rgba(255,255,255, 0.5);}
-
-
 #zoom{
-
 	margin-bottom: 10px;
+	width: 100%;
 }
