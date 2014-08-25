@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Alternative grid config for imagefield
+ * @author  Luis Santiago "blad"
+ * 
+ * ProcessWire 2.x 
+ * Copyright (C) 2010 by Ryan Cramer 
+ * Licensed under GNU/GPL v2, see LICENSE.TXT
+ * 
+ * http://www.processwire.com
+ * http://www.ryancramer.com
+ *
+ */
+
+class altGrid extends WireData implements Module {
+
+    public static function getModuleInfo() {
+        return array(
+            'title' => 'Alternative grid for multiple images/files', 
+            'version' => 1, 
+            'summary' => "This module show an alternative grid system in multiple images or files",
+            'href' => '',
+            'author' => 'Blad',
+            'autoload' => true
+            );
+    }
+
+    public function init() {
+            $this->addHookBefore('InputfieldImage::render', $this, 'altGridconfigBefore');
+        }
+
+     public function altGridconfigBefore(HookEvent $event) {
+
+                $this->config->scripts->add($this->config->urls->altGrid . 'altGrid.js'); 
+                $this->config->styles->add($this->config->urls->altGrid . 'altGrid.css');                             
+        }
+}
