@@ -31,13 +31,8 @@ class AltGrid extends WireData implements Module {
         }
         
     public function altGridconfigBefore(HookEvent $event) {
-                $this->config->scripts->add($this->config->urls->AltGrid . 'altGrid.js'); 
+                $this->config->scripts->add($this->config->urls->AltGrid . 'AltGrid.js'); 
                 $this->config->scripts->add($this->config->urls->AltGrid . 'jquery.cookie.js'); 
-                $this->config->styles->add($this->config->urls->AltGrid . 'altGrid.css');
-
-                        
+                $this->config->styles->add($this->config->urls->AltGrid . 'AltGrid.css');                
          }
-    
-    
 }
-
