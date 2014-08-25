@@ -30,29 +30,46 @@ class altGrid extends WireData implements Module, ConfigurableModule {
             $this->addHookBefore('InputfieldImage::render', $this, 'altGridconfigBefore');
         }
         
-     public function altGridconfigBefore(HookEvent $event) {
+    public function altGridconfigBefore(HookEvent $event) {
                 $this->config->scripts->add($this->config->urls->altGrid . 'altGrid.js'); 
-                $this->config->styles->add($this->config->urls->altGrid . 'altGrid.css');                             
+                $this->config->styles->add($this->config->urls->altGrid . 'altGrid.css');
+
+
+            echo '<input type="hidden" id="1" value="<?php echo $varp; ?>">';
+            echo '<input type="hidden" id="2" value="<?php echo $varm; ?>">';
+
+                        
          }
 
-     static public function getModuleConfigInputfields(array $data) {
-		$inputfields = new InputfieldWrapper();
-		$data = array_merge(self::$defaultConfig, $data); 
+    public function __construct() {
 
-		$fi = wire('modules')->get('InputfieldText'); 
-		$fi->attr('name', 'marginfield');
-		$fi->attr('value', $data['20px']); 
-		$fi->label = __('Images margin-right:'); 
-		$inputfields->add($fi);
-		
-		$fi = wire('modules')->get('InputfieldText'); 
-		$fi->attr('name', 'percentfield');
-		$fi->attr('value', $data['30%']); 
-		$fi->label = __('porcentaje de anchura  por defecto de las imágenes:'); 
-		$inputfields->add($fi);
+        $this->marginfield = '20px';
+        $this->percentfield = '30%';
+    }
 
-		return $inputfields;
-	}
+
+
+    public static function getModuleConfigInputfields(array $data) {
+        $inputfields = new InputfieldWrapper(); 
+
+        $field = wire('modules')->get('InputfieldText');
+        $field->name = 'marginfield';
+        $field->value = $data['marginfield'];
+        $field->label = 'Images margin-right:'; 
+        $field->notes = 'Default 20px'; 
+      
+        $inputfields->add($field);
+        
+        $field = wire('modules')->get('InputfieldText');
+        $field->name = 'percentfield';
+        $field->value = $data['percentfield'];
+        $field->label = 'Width percentage of the images:'; 
+        $field->notes = 'Default 30%'; 
+
+        $inputfields->add($field);
+
+        return $inputfields;
+    }
 
     
     
