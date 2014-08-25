@@ -1,30 +1,33 @@
 $(document).ready(function() {
         $(".InputfieldFileUpload").css("clear", "both");
-        $(".InputfieldFileItem").css("width", "100%");
-        $( '<div id="zoom"><div id="slider"></div><input class="inputporcentaje" maxlength="4" type="text" id="porcentaje" readonly></div>' ).insertBefore( ".InputfieldFileList " );
-        
-$("#slider").slider({
-  	min:10,
-    max:100,
-    value:100,
-    slide: function(e,ui) {
-        var sliderValue =  jQuery("#slider").slider("value");
-        jQuery(".InputfieldFileItem").width(sliderValue + "%");
-        jQuery(".InputfieldFileItem").height('auto');
-        $( "#porcentaje" ).val(sliderValue+"%");
-    }
-});
+        $(".InputfieldFileItem").css("margin-right", "10px");
+        $( '<div id="zoom"><div id="slider"></div></div>' ).insertBefore( ".InputfieldFileList " );
+        $("#slider").slider({
+          	min:10,
+            max:100,
+            value:$.cookie('altgridcookie'),
+            slide: function(e,ui) {
+                var sliderValue =  jQuery("#slider").slider("value");
+                $(".InputfieldFileItem").width(sliderValue + "%");
+                $(".InputfieldFileItem").height('auto');
+                $.cookie('altgridcookie', $("#slider").slider("value"), { expires: 365 });
+            }
+        });
 
-    $(document).on('click', '.InputfieldImageListToggle', function() {
+$(".InputfieldFileItem").css({"width": $.cookie('altgridcookie') + "%"});
+
+$(document).on('click', '.InputfieldImageListToggle', function() {
         $(".floatleft").addClass( "InputfieldImageGrid" )
-        jQuery(".InputfieldFileItem").width('auto');
-        jQuery(".InputfieldFileItem").height('auto');
+        $(".InputfieldFileItem").width('auto');
+        $(".InputfieldFileItem").height('auto');
         if($("#zoom").is(':visible')){
-           $("#zoom").hide();
-       } else if ($("#zoom").is(':hidden')) {
-           $("#zoom").show(); 
+              $("#zoom").hide();
+        } else if ($("#zoom").is(':hidden')) {
+              $("#zoom").show(); 
+              $(".InputfieldFileItem").css({"width": $.cookie('altgridcookie') + "%"});
+
        }; 
 
-
     }); 
+
 });
