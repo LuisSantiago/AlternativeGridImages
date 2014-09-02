@@ -29,5 +29,13 @@ $(document).on('click', '.InputfieldImageListToggle', function() {
        }; 
 
     }); 
-
+    
+$(".InputfieldFileName").each(function(i){
+    len=$(this).text().length;
+    if(len>9)
+    {
+      $(this).text($(this).text().substr(0,9)+'...');
+    }
+  }); 
+  
 });
