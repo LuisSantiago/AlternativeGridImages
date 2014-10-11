@@ -17,9 +17,9 @@ class AlternativeGridImages extends WireData implements Module {
 
     public static function getModuleInfo() {
         return array(
-            'title' => 'Alternative grid for multiple images/files', 
+            'title' => 'Alternative grid for multiple images', 
             'version' => 107, 
-            'summary' => "This module show an alternative grid system in multiple images or files",
+            'summary' => "This module show an alternative grid system in multiple images (not files).",
             'href' => 'https://github.com/LuisSantiago/AlternativeGridImages',
             'author' => 'Blad',
             'autoload' => true
